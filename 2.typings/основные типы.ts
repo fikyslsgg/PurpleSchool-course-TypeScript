@@ -34,6 +34,7 @@ function toWords(number: string, asOrdinal: string): number {
   var words: number;
   var num: number = parseInt(number, 10);
 
+
   if (!isFinite(num)) {
     throw new TypeError(
       'Not a finite number: ' + number + ' (' + typeof number + ')'
