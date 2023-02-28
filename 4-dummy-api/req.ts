@@ -2,10 +2,9 @@ const axios = require('axios').default;
 const url: string = 'https://dummyjson.com/users';
 
 enum Gender {
-  male = 'male',
-  female = 'female'
+  Male = 'male',
+  Female = 'female'
 }
-
 
 interface Hair {
   color: string;
@@ -76,19 +75,13 @@ async function getUser(url: string) {
       .then(function (response: Response) {
         console.log(response);
       })
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.log(error.message);
+  } catch (error: any) {
+    if (axios.isAxiosError(error)) {
+      throw new Error('Axios error: ' + error.message);
+    } else if (error instanceof Error) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Something went wrong!');
     }
-  };
+  }
 }
-
-
-
-
-
-
-
-
-
-
