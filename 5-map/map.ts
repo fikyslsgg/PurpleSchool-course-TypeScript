@@ -13,7 +13,6 @@ class MyMap {
     if (index !== -1) {
       return this.values[index];
     }
-    return undefined;
   }
 
   public delete(key: string): boolean {
@@ -31,28 +30,3 @@ class MyMap {
     this.values = [];
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
