@@ -1,4 +1,4 @@
-function pickObjectKeys<T extends object, K extends keyof T>(obj: T, keys: K[]): Pick<T, K> {
+function pickObjectKeys<T extends object, K extends keyof T>(obj: T, keys: K[]): any {
   const result: Partial<Pick<T, K>> = {};
   keys.forEach(key => {
     if (obj.hasOwnProperty(key)) {
@@ -6,5 +6,5 @@ function pickObjectKeys<T extends object, K extends keyof T>(obj: T, keys: K[]):
     }
   });
 
-  return result as Pick<T, K>;
+  return result;
 }
