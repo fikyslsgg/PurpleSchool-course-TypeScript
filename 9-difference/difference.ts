@@ -15,19 +15,12 @@ interface IDifference {
   b: string;
 }
 
-type KeysOfType<T, U> = { [K in keyof T]: T[K] extends U ? K : never }[keyof T];
-
-type ExcludeKeys<T, U> = Pick<T, Exclude<keyof T, KeysOfType<T, U>>>;
-
-function difference<T extends object, U extends object>(obj1: T, obj2: U): ExcludeKeys<T, U> {
-  const result = { ...obj1 } as ExcludeKeys<T, U>;
+function difference(obj1: IA, obj2: IB): Omit<IA, keyof IB> {
+  const result = { ...obj1 };
   for (const key in obj2) {
     if (key in result) {
-      delete result[key as unknown as keyof typeof result];
+      delete result[key];
     }
   }
   return result;
 }
-
-let v0: IDifference = difference(a, b);
-console.log(v0);
