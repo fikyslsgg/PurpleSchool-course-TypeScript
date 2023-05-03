@@ -12,15 +12,9 @@ let a: IA = { a: 5, b: '' };
 let b: IB = { a: 10, c: true };
 
 interface IDifference {
-  b: string;
+  [key: string]: any;
 }
 
-function difference(obj1: IA, obj2: IB): Omit<IA, keyof IB> {
-  const result = { ...obj1 };
-  for (const key in obj2) {
-    if (key in result) {
-      delete result[key];
-    }
-  }
-  return result;
+function difference(obj1: IDifference, obj2: IDifference): Omit<IDifference, keyof IDifference> {
+  return Object.keys(obj1).filter((key) => !(key in obj2)).reduce((acc, key) => ({ ...acc, [key]: obj1[key] }), {});
 }
