@@ -31,7 +31,6 @@ class RequestBuilder implements IRequestBuilder {
     return this;
   };
 
-
   async exec(): Promise<void> {
     const res = await fetch(this.url, {
       method: this.method,
