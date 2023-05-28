@@ -22,7 +22,7 @@ class ItemList {
       } else {
         return -1;
       }
-    });
+    })
   }
 
   public sortByData() {
