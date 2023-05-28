@@ -14,7 +14,6 @@ class RequestAPI implements IRequest {
         .then((data) => console.log(data))
       return res;
     }
-
     catch (e) {
       console.log(e);
     }

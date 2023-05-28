@@ -37,7 +37,6 @@ class RequestBuilder implements IRequestBuilder {
       body: JSON.stringify(this.body),
       headers: this.headers
     })
-
       .then((response) => response.json())
       .then((data) => console.log(data))
     return res;
