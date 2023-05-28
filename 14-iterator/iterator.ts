@@ -116,7 +116,6 @@ itemList.addItem(new Item(1, new Date(100), 'title'));
 itemList.addItem(new Item(2, new Date(200), 'title'));
 itemList.addItem(new Item(3, new Date(300), 'title'));
 
-
 const iteratorId = itemList.getIteratorId();
 console.log(iteratorId.current());
 console.log(iteratorId.next());
