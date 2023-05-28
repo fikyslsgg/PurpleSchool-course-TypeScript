@@ -25,6 +25,7 @@ class ItemList {
     })
   }
 
+
   public sortByData() {
     this.items = this.items.sort((a, b) => {
       if (a.date > b.date) {
