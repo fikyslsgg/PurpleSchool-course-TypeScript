@@ -6,6 +6,7 @@ interface IRequestDetail {
   id: number;
 }
 
+
 class RequestAPI implements IRequest {
   async getRequest(id: number): Promise<IRequestDetail | undefined | void> {
     try {
@@ -15,8 +16,8 @@ class RequestAPI implements IRequest {
       return res;
     }
     catch (e) {
-  console.log(e);
-}
+      console.log(e);
+    }
   }
 }
 

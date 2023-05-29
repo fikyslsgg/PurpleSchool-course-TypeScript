@@ -16,6 +16,7 @@ class RequestBuilder implements IRequestBuilder {
     return this;
   };
 
+
   setBody(body: Record<string, any>) {
     this.body = body;
     return this;

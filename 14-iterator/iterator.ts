@@ -105,6 +105,7 @@ class DateItemIterator implements IIterator<Item> {
     this.position -= 1;
     return this.itemList.getItem()[this.position];
   }
+
   index(): number {
     return this.position;
   }
