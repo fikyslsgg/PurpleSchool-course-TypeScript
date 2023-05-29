@@ -12,7 +12,6 @@ class Item {
 
 class ItemList {
   private items: Item[] = [];
-
   public sortById() {
     this.items = this.items.sort((a, b) => {
       if (a.id > b.id) {
@@ -24,7 +23,6 @@ class ItemList {
       }
     })
   }
-
 
   public sortByData() {
     this.items = this.items.sort((a, b) => {
@@ -110,26 +108,4 @@ class DateItemIterator implements IIterator<Item> {
   index(): number {
     return this.position;
   }
-<<<<<<< HEAD
 }
-=======
-}
-
-const itemList = new ItemList();
-itemList.addItem(new Item(1, new Date(100), 'title'));
-itemList.addItem(new Item(2, new Date(200), 'title'));
-itemList.addItem(new Item(3, new Date(300), 'title'));
-
-const iteratorId = itemList.getIteratorId();
-console.log(iteratorId.current());
-console.log(iteratorId.next());
-console.log(iteratorId.prev());
-console.log(iteratorId.index());
-
-const iteratorDate = itemList.getIteratorDate();
-console.log(iteratorDate.current());
-console.log(iteratorDate.next());
-console.log(iteratorDate.next());
-console.log(iteratorDate.prev());
-console.log(iteratorDate.index());
->>>>>>> 29f37037260240cd78ee27733d39f044bc25784e
