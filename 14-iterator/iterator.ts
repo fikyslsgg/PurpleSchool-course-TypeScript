@@ -2,7 +2,6 @@ class Item {
   id: number;
   date: Date;
   title: string;
-
   constructor(id: number, date: Date, title: string) {
     this.id = id;
     this.date = date;
