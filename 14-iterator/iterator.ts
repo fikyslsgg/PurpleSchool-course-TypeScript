@@ -35,7 +35,7 @@ class ItemList {
     })
   }
 
-  public addItem(item: Item) {
+  public addItem(item: Item, direction?: SortDirection) {
     this.items.push(item);
   }
 
@@ -48,7 +48,7 @@ class ItemList {
   }
 
   public getIteratorId() {
-    return new IdItemIterator(this);
+    return new DateItemIterator(this);
   }
 
   public getIteratorDate() {
@@ -63,13 +63,25 @@ interface IIterator<T> {
   index(): number;
 }
 
-class IdItemIterator implements IIterator<Item> {
+type SortDirection = 'asc' | 'desc';
+
+class TaskIterator implements IIterator<Item> {
   private position: number = 0;
   private itemList: ItemList;
-  constructor(itemList: ItemList) {
-    itemList.sortById();
-    this.itemList = itemList;
+
+
+  constructor(taskList: ItemList, key: keyof Item, direction?: SortDirection) {
+    if (direction === 'asc') {
+      taskList.sortById();
+    } else if (direction === 'desc') {
+      taskList.sortById();
+      taskList.getItem().reverse();
+    } else {
+      taskList.sortById();
+    }
+    this.itemList = taskList;
   }
+
   current(): Item | undefined {
     return this.itemList.getItem()[this.position];
   }
@@ -89,8 +101,15 @@ class IdItemIterator implements IIterator<Item> {
 class DateItemIterator implements IIterator<Item> {
   private position: number = 0;
   private itemList: ItemList;
-  constructor(itemList: ItemList) {
-    itemList.sortByData();
+  constructor(itemList: ItemList, direction?: SortDirection) {
+    if (direction === 'asc') {
+      itemList.sortByData();
+    } else if (direction === 'desc') {
+      itemList.sortByData();
+      itemList.getItem().reverse();
+    } else {
+      itemList.sortByData();
+    }
     this.itemList = itemList;
   }
   current(): Item | undefined {
