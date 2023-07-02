@@ -11,7 +11,7 @@ class Item {
 
 class ItemList {
   private items: Item[] = [];
-  public sortById() {
+  public sortById(): void {
     this.items = this.items.sort((a, b) => {
       if (a.id > b.id) {
         return 1;
@@ -20,10 +20,10 @@ class ItemList {
       } else {
         return -1;
       }
-    })
+    });
   }
 
-  public sortByData() {
+  public sortByData(): void {
     this.items = this.items.sort((a, b) => {
       if (a.date > b.date) {
         return 1;
@@ -32,26 +32,26 @@ class ItemList {
       } else {
         return -1;
       }
-    })
+    });
   }
 
-  public addItem(item: Item, direction?: SortDirection) {
-    this.items.push(item);
+  public addItem(item: Item, direction?: SortDirection): number {
+    return this.items.push(item);
   }
 
-  public getItem() {
+  public getItem(): Item[] {
     return this.items
   }
 
-  public count() {
+  public count(): number {
     return this.items.length;
   }
 
-  public getIteratorId() {
+  public getIteratorId(): DateItemIterator {
     return new DateItemIterator(this);
   }
 
-  public getIteratorDate() {
+  public getIteratorDate(): DateItemIterator {
     return new DateItemIterator(this);
   }
 }
@@ -68,7 +68,6 @@ type SortDirection = 'asc' | 'desc';
 class TaskIterator implements IIterator<Item> {
   private position: number = 0;
   private itemList: ItemList;
-
 
   constructor(taskList: ItemList, key: keyof Item, direction?: SortDirection) {
     if (direction === 'asc') {
